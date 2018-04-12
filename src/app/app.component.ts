@@ -51,12 +51,12 @@ export class AppComponent implements OnInit {
         this._storageService.remove('tutorial');
         window.location.reload();
 
-        window.ga('send', {
-            hitType: 'event',
-            eventCategory: 'Site',
-            eventAction: 'How to play',
-            eventLabel: 'Open'
-        });
+        // window.ga('send', {
+        //     hitType: 'event',
+        //     eventCategory: 'Site',
+        //     eventAction: 'How to play',
+        //     eventLabel: 'Open'
+        // });
     }
 
     /**
@@ -73,12 +73,12 @@ export class AppComponent implements OnInit {
                 _bet.withdrawHash = withdraw;
                 this._playService.updateBets(this.account.address, this.bets);
 
-                window.ga('send', {
-                    hitType: 'event',
-                    eventCategory: bet.contractAddress,
-                    eventAction: 'Withdraw',
-                    eventLabel: 'bet'
-                });
+                // window.ga('send', {
+                //     hitType: 'event',
+                //     eventCategory: bet.contractAddress,
+                //     eventAction: 'Withdraw',
+                //     eventLabel: 'bet'
+                // });
 
             } else {
                 this.withdrawMessage = error;
@@ -89,24 +89,24 @@ export class AppComponent implements OnInit {
     public closePlay() {
         this.isPlay = false;
 
-        window.ga('send', {
-            hitType: 'event',
-            eventCategory: this.playContractObject.address,
-            eventAction: 'Close play',
-            eventLabel: 'close-play'
-        });
+        // window.ga('send', {
+        //     hitType: 'event',
+        //     eventCategory: this.playContractObject.address,
+        //     eventAction: 'Close play',
+        //     eventLabel: 'close-play'
+        // });
 
         delete this.playContractObject;
     }
 
     public play(address) {
 
-        window.ga('send', {
-            hitType: 'event',
-            eventCategory: address,
-            eventAction: 'Open play',
-            eventLabel: 'open-play'
-        });
+        // window.ga('send', {
+        //     hitType: 'event',
+        //     eventCategory: address,
+        //     eventAction: 'Open play',
+        //     eventLabel: 'open-play'
+        // });
 
         this.playContractObject = this.getContractForAddress(address);
         if (this.playContractObject.contractData.open) {
@@ -132,33 +132,33 @@ export class AppComponent implements OnInit {
     }
 
     private checkEtherForContractAddress(address, fromBlock) {
-
-        const url = 'https://api.etherscan.io/api';
-        const params = {
-            module: 'logs',
-            action: 'getLogs',
+        var filter = window.web3.eth.filter({
             fromBlock: fromBlock,
-            toBlock: 'latest',
-            address: address,
-            apikey: 'FXGY871F6ZW7P77YMDYMQZIPMSGPAPYGWV'
-        };
-        const ether = this._etherscanService.get(url, params);
-        ether.subscribe(data => {
-            if (!data || !this.bets) return;
+            toBlock: "latest",
+            address: address
+           }); 
+        
+        var bets = this.bets; 
+
+        filter.get(function(error, data){
+            if (!data || !bets) {
+                console.log("No data");
+                return;
+            }
             const _result: any = data;
-            const _data = JSON.parse(_result._body);
-            _data.result.forEach(d => {
-                const _bets = this.bets[d.address];
+            _result.forEach(d => {
+                const _bets = bets[d.address];
                 if (!_bets) return;
                 for (const _bKey in _bets) {
                     const _bet = _bets[_bKey];
                     if (_bet.transactionHash === d.transactionHash && !_bet.isConfirmed) {
                         _bet.isConfirmed = true;
-                        this._playService.updateBets(this.account.address, this.bets);
+                        this._playService.updateBets(this.account.address, bets);
                     }
                 }
             });
-        });
+        });   
+
     }
 
     /**
@@ -394,6 +394,9 @@ export class AppComponent implements OnInit {
                         }
                     });
             }
+            else {
+                console.log(errorBlock);
+            }
         });
     }
 
@@ -410,7 +413,14 @@ export class AppComponent implements OnInit {
                                 this._parseBetsForResult(result);
                             }
                         }
+                        else {
+                            console.log(error);
+                        }
+
                     });
+            }
+            else {
+                console.log(errorBlock);
             }
         });
     };
@@ -429,6 +439,9 @@ export class AppComponent implements OnInit {
                             }
                         }
                     });
+            }
+            else {
+                console.log(errorBlock);
             }
         });
     };
@@ -594,12 +607,12 @@ export class AppComponent implements OnInit {
 
     private tryReconnect() {
         if (this.retryConnect > 5) {
-            window.ga('send', {
-                hitType: 'event',
-                eventCategory: 'Site',
-                eventAction: 'MetaMask',
-                eventLabel: 'NO METAMASK'
-            });
+            // window.ga('send', {
+            //     hitType: 'event',
+            //     eventCategory: 'Site',
+            //     eventAction: 'MetaMask',
+            //     eventLabel: 'NO METAMASK'
+            // });
             return;
         }
         setTimeout(() => {
@@ -649,10 +662,10 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
 
-        if (!window.ga) {
-            window.ga = function () {
-            };
-        }
+        // if (!window.ga) {
+        //     window.ga = function () {
+        //     };
+        // }
 
         this.connectService.startConnection().then((data) => this.updateConnectionStatus(data));
 

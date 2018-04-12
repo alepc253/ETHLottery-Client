@@ -25,6 +25,7 @@ export class BlockCounterComponent implements OnInit {
             }
             window.web3.eth.getBlockNumber((error, result) => {
                 if (error) {
+                    console.log(error);
                     return;
                 }
                 this.blockWaiting = this.lotteryResultBlock - result;

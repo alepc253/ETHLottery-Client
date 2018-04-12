@@ -10,8 +10,8 @@ export class ContractManagerService {
     private _event: Subject<any> = new Subject<any>();
 
     private managerAddress = {
-        test: '0xB1FFaF41590778017073DF4a891E71B23795A0B4',
-        main: '0x5f90595055e61755d71c04612e9eceeac34fb789'
+        test: "0x863ed074ff47e9551f8c7162f933bcfdaa7be8f4", // "0xf337a12db1b712526c5e0c12545d97e4dbeab746", // "0x863ed074ff47e9551f8c7162f933bcfdaa7be8f4",
+        main: "0x863ed074ff47e9551f8c7162f933bcfdaa7be8f4" // "0x863ed074ff47e9551f8c7162f933bcfdaa7be8f4"
     };
     private managerData: any;
 
@@ -48,9 +48,9 @@ export class ContractManagerService {
      * @return {any}
      */
     private makeManagerAddress(network) {
-        if (network === '3') {
+        if (network === '31') {
             return this.managerAddress.test;
-        } else if (network === '1') {
+        } else if (network === '30') {
             return this.managerAddress.main;
         }
     }

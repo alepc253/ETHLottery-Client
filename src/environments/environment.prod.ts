@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    ethernetUrl: '//etherscan.io/'
+    ethernetUrl: '//explorer.testnet.rsk.co/'
 };

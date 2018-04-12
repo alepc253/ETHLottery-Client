@@ -17,10 +17,7 @@
                      class="meta-mask">
                     <strong>Unlock</strong> your MetaMask <img src="../assets/images/metamask.gif">
                 </div>
-                <div>
-                    <a class="slack"
-                       href="https://lifelottery.herokuapp.com/"
-                       target="_blank"><img src="../assets/images/slack.png"> Join us!</a>
+                <div>                    
                     <button (click)="howToPlay()">How to play?</button>
                 </div>
             </div>
@@ -105,10 +102,6 @@
                     <!--</div>-->
                     <!--</div>-->
 
-                    <a href="https://lifeslot.github.io/" class="life-slot" target="_blank">
-                        <img src="../assets/images/life-slot.png" alt="Try now LifeSlot"/>
-                    </a>
-
                 </section>
 
                 <aside class="sidebar">
@@ -146,7 +139,7 @@
                             <br><br>
                             <p>
                                 <a href="{{makeUrlForAddress('0x5f90595055e61755d71c04612e9eceeac34fb789')}}"
-                                   target="_blank">Read our contract on etherscan mainnet .</a></p>
+                                   target="_blank">Read our contract.</a></p>
                         </div>
 
                         <div *ngIf="withdrawMessage"
@@ -178,7 +171,7 @@
                                         <!--BET STATUS ERROR -->
                                         <div class="bets__status--error"
                                              *ngIf="betValue?.isInvalid && !betValue?.isConfirmed">
-                                            <a href="https://ropsten.etherscan.io/tx/{{betValue?.transactionHash}}"
+                                            <a href="https://explorer.testnet.rsk.co/tx/{{betValue?.transactionHash}}"
                                                target="_blank">
                                                 Cancelled
                                             </a>
@@ -213,7 +206,7 @@
                                                target="_blank">
                                                 <p>Confirmed</p>
                                                 <span>
-                                            <i [innerHtml]="betValue?.fee/1000000000000000000"></i> eth
+                                            <i [innerHtml]="betValue?.fee/1000000000000000000"></i> SBTC
                                         </span>
                                             </a>
                                         </div>
@@ -226,7 +219,7 @@
                                                target="_blank">
                                                 <p>Loser bet</p>
                                                 <span>
-                                            <i [innerHtml]="betValue?.fee/1000000000000000000"></i> eth
+                                            <i [innerHtml]="betValue?.fee/1000000000000000000"></i> SBTC
                                         </span>
                                             </a>
                                         </div>
@@ -287,10 +280,6 @@
 
         <footer>
             Life lottery
-            <i>Made with ❤ in Amsterdam</i>
-            <a href="https://lifeslot.github.io/">LifeSlot</a>
-            <a href="https://dapps.ethercasts.com/"
-               target="_blank">State of THE DAPPS</a>
         </footer>
     </div>
 </div>

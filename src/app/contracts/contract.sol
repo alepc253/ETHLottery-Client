@@ -1,7 +1,7 @@
 pragma solidity ^0.4.11;
 
-contract ETHLottery {
-    bytes32 public name = 'ETHLottery - Last 1 Byte Lottery';
+contract RSKLottery {
+    bytes32 public name = 'RSKLottery - Last 1 Byte Lottery';
     address public owner;
     bool public open;
     uint256 public jackpot;
@@ -19,7 +19,7 @@ contract ETHLottery {
     event Result(bytes1 _result);
     event Open(bool _open);
 
-    function ETHLottery(uint256 _fee, uint256 _jackpot, uint256 _owner_fee) {
+    function RSKLottery(uint256 _fee, uint256 _jackpot, uint256 _owner_fee) {
         owner = msg.sender;
         open = true;
         fee = _fee;

@@ -32,7 +32,7 @@ export class EtherscanService {
 
     makeUrlForAddress(address) {
         const network = this._connectService.getNetworkIdSync();
-        const url = this.makeEtherScanUrl(network) + 'address/' + address;
+        const url = this.makeEtherScanUrl(network) + 'addr/' + address;
         return url;
     }
 
@@ -74,11 +74,11 @@ export class EtherscanService {
      * @return {string}
      */
     public makeEtherScanUrl(network) {
-        const etherScanUrl = '//etherscan.io/';
-        const etherScanTestNetUrl = '//ropsten.etherscan.io/';
-        if (network === '3') {
+        const etherScanUrl = '//explorer.testnet.rsk.co/';
+        const etherScanTestNetUrl = '//explorer.testnet.rsk.co/';
+        if (network === '31') {
             return etherScanTestNetUrl;
-        } else if (network === '1') {
+        } else if (network === '30') {
             return etherScanUrl;
         }
     }

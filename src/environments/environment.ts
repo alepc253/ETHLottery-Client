@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    ethernetUrl: '//ropsten.etherscan.io/'
+    ethernetUrl: '//explorer.testnet.rsk.co/'
 };
