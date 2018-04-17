@@ -9,7 +9,7 @@
     background: $color-white;
     z-index: 10;
     animation: tutorial 4s ease;
-    min-height: 600px;
+    min-height: 500px;
 }
 
 @keyframes tutorial {
@@ -23,7 +23,7 @@
 
 .tutorial-content {
     text-align: center;
-    height: 500px;
+    height: 475px;
     width: 800px;
     margin: auto;
 
@@ -31,7 +31,7 @@
 
 .tutorial-content-steps {
     position: relative;
-    height: 550px;
+    height: 475px;
 
     &__label {
         line-height: 40px;
@@ -64,7 +64,7 @@
 
     &__image {
         width: 100%;
-        height: 500px;
+        height: 450px;
         margin-top: 30px;
     }
 
