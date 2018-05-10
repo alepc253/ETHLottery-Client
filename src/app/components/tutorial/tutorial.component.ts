@@ -26,7 +26,7 @@ export class TutorialComponent implements OnInit {
 
     public nextStep() {
         this.currentStep++;
-        if (this.currentStep > 3) {
+        if (this.currentStep > 4) {
             this._close();
         }
     }

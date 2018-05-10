@@ -22,6 +22,24 @@
 
             <div [ngClass]="{'active': currentStep === 1}"
                  class="tutorial-content-steps__step">
+                <h1 class="tutorial-content-steps__label tutorial-content-steps__label--red">
+                    Play with Metamask
+                </h1>
+                <div class="tutorial-content-steps__image">
+                    <div style="width: 800px; height: 500px; padding-top: 100px">
+                        <p style="vertical-align: middle; text-align: center;">Connect your Metamask with RSK following <a href="https://github.com/rsksmart/rskj/wiki/Configure-Metamask-to-connect-with-RSK" target="_blank">this</a> guide.</p>
+                    </div>
+                </div>
+
+                <nav>
+                    <a (click)="previousStep()">prev</a>
+                    <a (click)="nextStep()">next</a>
+                    <a (click)="skip()" class="skip">skip</a>
+                </nav>
+            </div>
+
+            <div [ngClass]="{'active': currentStep === 2}"
+                 class="tutorial-content-steps__step">
                 <h1 class="tutorial-content-steps__label tutorial-content-steps__label--green">
                     Pick a lottery
                 </h1>
@@ -36,7 +54,7 @@
                 </nav>
             </div>
 
-            <div [ngClass]="{'active': currentStep === 2}"
+            <div [ngClass]="{'active': currentStep === 3}"
                  class="tutorial-content-steps__step">
                 <h1 class="tutorial-content-steps__label tutorial-content-steps__label--blue">
                     Place a bet
@@ -51,7 +69,7 @@
                 </nav>
             </div>
 
-            <div [ngClass]="{'active': currentStep === 3}"
+            <div [ngClass]="{'active': currentStep === 4}"
                  class="tutorial-content-steps__step">
                 <h1 class="tutorial-content-steps__label tutorial-content-steps__label--green">
                     The result
