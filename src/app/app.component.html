@@ -14,11 +14,14 @@
             </h1>
             <div class="right">
                 <div *ngIf="!account?.address"
-                     class="meta-mask">
+                     class="meta-mask" style="float: right; margin:2px;">
                     <strong>Unlock</strong> your MetaMask <img src="../assets/images/metamask.gif">
                 </div>
-                <div>                    
+                <div style="float: right; margin:2px;">
                     <button (click)="howToPlay()">How to play?</button>
+                </div>
+                <div style="float: right; margin:2px;">
+                    <button onclick="window.open('https://github.com/rsksmart/rskj/wiki/Configure-Metamask-to-connect-with-RSK', '_blank')">Metamask with RSK</button>
                 </div>
             </div>
         </header>
